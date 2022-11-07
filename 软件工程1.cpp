@@ -9,14 +9,14 @@ int main()
     for(int i=1;i<=n;i++)
     {
         int num;
-        cin>>num;
+        scanf("%d",&num);
         nowSum+=num;
         if(nowSum>maxSum)maxSum=nowSum;
         if(nowSum<0)nowSum=0;
 
     }
 
-    cout<<maxSum<<endl;
+    printf("%d",nowSum);
     return 0;
 }
 
