@@ -5,7 +5,7 @@ int main()
     int n;
     int maxSum=0;
     int nowSum=0;
-    cin>>n;
+    scanf("%d",&n);
     for(int i=1;i<=n;i++)
     {
         int num;
