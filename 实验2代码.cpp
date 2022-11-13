@@ -1,751 +1,486 @@
-#include<stdio.h>
+#include<iostream>
 #include<stdlib.h>
-#include <time.h>
-int elevator1(){
-	int floor[20];
-	int i=0;
-	int j=0;
-	int t=0;
-	int p=0;
-	int c=0;
-	int weight[10];
-	int s=0;
-	int h;
-	int l;
-	int p1;
-	int m;
-	int x;
-	srand(time(NULL));
-	x=rand()%20;
-	while(1){
-		printf("1.ÉÏÂ¥\n");
-		printf("2.ÏÂÂ¥\n");
-		printf("3.ÍË³ö\n");
-		printf("ÇëÑ¡Ôñ(1-3):"); 
-		scanf("%d",&c); 
-		switch(c){
-		case 1:
-			printf("´ËµçÌİ¿É·şÎñÈ«²¿Â¥²ã\n");
-			printf("´ËµçÌİ×î´ó³Ë¿ÍÊıÁ¿10ÈË£¬×î´óÔØÖØÁ¿800KG\n");
-			printf("´ËÊ±µçÌİÕıÔÚ%d²ã,ÉÔ×÷µÈ´ı\n",x);
-			printf("ÇëÊäÈë½øÈëµçÌİµÄÈËÊı:\n");
-			scanf("%d",&p);
-			printf("ËûÃÇµÄÌåÖØÒÀ´ÎÊÇ:\n");
-			for(i=0;i<p;i++){
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&weight[i]);
-				s=s+weight[i];
-				if(s>800){
-					printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË\n");
-					s=s-weight[i];
-					p=p-1;
-				}
-			}
-			printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-			printf("ÇëÊäÈëÄãÏëÈ¥µÄÂ¥²ã:\n");
-			for(i=0;i<p;i++){
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&floor[i]);
-			}
-			for(j=0;j<p-1;j++)
-				for(i=0;i<p-1-j;i++){
-					if(floor[i]>floor[i+1]){
-						t=floor[i];
-						floor[i]=floor[i+1];
-						floor[i+1]=t;
-					}
-				}
-				printf("½«ÒÀ´Îµ½´ïÏÂÁĞÂ¥²ã:\n");
-				for(j=0;j<p;j++){
-					printf("%d\n",floor[j]);
-					printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[j]);
-					printf("´Ë²ãÓĞÃ»ÓĞÈË½øµçÌİ?ÇëÑ¡Ôñ£º1-2\n");
-					printf("1.ÓĞÈË\n");
-					printf("2.ÎŞÈË\n");
-					scanf("%d",&h);
-					switch(h){
-					case 1:
-						printf("Çë½øµçÌİ\n");
-						printf("½øÈëµçÌİÈËÊı:\n");
-						scanf("%d",&p1);
-						printf("ÒÀ´ÎµÄÌåÖØ:\n");
-						for(l=0;l<p1;l++){
-							scanf("%d",&weight[l]);
-							s=s+weight[l];
-							if(s>800){
-								printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË\n");
-								s=s-weight[l];
-								p1=p1-1;
-							}
-						}
-						printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-						printf("ÇëÊäÈëÏëÈ¥µÄÂ¥²ã:\n");
-						for(m=0;m<p1;m++){
-							scanf("%d",&floor[m]);
-							printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[m]);
-							continue;
-						}
-						break;  
-					case 2:
-						printf("¹Ø±ÕµçÌİÃÅ\n");
-						break;
-					}
-				}
-				break;
-		case 2:
-			printf("´ËµçÌİ¿É·şÎñÈ«²¿Â¥²ã\n"); 
-			printf("´ËµçÌİ×î´ó³Ë¿ÍÊıÁ¿10ÈË£¬×î´óÔØÖØÁ¿800KG\n");
-			printf("´ËÊ±µçÌİÕıÔÚ%d²ã,ÉÔ×÷µÈ´ı\n",x);
-			printf("ÇëÊäÈë½øÈëµçÌİµÄÈËÊı:\n");
-			scanf("%d",&p);
-			printf("ËûÃÇµÄÌåÖØÒÀ´ÎÊÇ:\n");
-			for(i=0;i<p;i++){
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&weight[i]);
-				s=s+weight[i];
-				if(s>800){
-					printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË\n");
-					s=s-weight[i];
-					p=p-1;
-				}
-			}
-			printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-			printf("ÇëÊäÈëÄãÏëÈ¥µÄÂ¥²ã:\n");
-			for(i=0;i<p;i++){
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&floor[i]);
-			}
-			for(j=0;j<p-1;j++)
-				for(i=0;i<p-1-j;i++){
-					if(floor[i]<floor[i+1]){
-						t=floor[i];
-						floor[i]=floor[i+1];
-						floor[i+1]=t;
-					}
-				}
-				printf("½«ÒÀ´Îµ½´ïÏÂÁĞÂ¥²ã:\n");
-				for(j=0;j<p;j++){
-					printf("%d\n",floor[j]);
-					printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[j]);
-					printf("´Ë²ãÓĞÃ»ÓĞÈË½øµçÌİ?ÇëÑ¡Ôñ£º1-2\n");
-					printf("1.ÓĞÈË\n");
-					printf("2.ÎŞÈË\n");
-					scanf("%d",&h);
-					switch(h){
-					case 1:
-						printf("Çë½øµçÌİ\n");
-						printf("½øÈëµçÌİÈËÊı:\n");
-						scanf("%d",&p1);
-						printf("ÒÀ´ÎµÄÌåÖØ:\n");
-						for(l=0;l<p1;l++){
-							scanf("%d",&weight[l]);
-							s=s+weight[l];
-							if(s>800){
-								printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË\n");
-								s=s-weight[l];
-								p1=p1-1;
-							}
-						}
-						printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-						printf("ÇëÊäÈëÏëÈ¥µÄÂ¥²ã:\n");
-						for(m=0;m<p1;m++){
-							scanf("%d",&floor[m]);
-							printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[m]);
-							continue;
-						}
-						break;
-					case 2:
-						printf("¹Ø±ÕµçÌİÃÅ\n");
-						break;
-					}
-				}
-				break;
-		case 3:
-			return 0;
-			break;
-		}
-	}
-}
+#include<cstring>
+#include<time.h>
+#include<cmath>
+#include<fstream>
+int num; //ç®—å¼æ•°é‡
+int imax;  //æœ€å¤§æ•°
+int nums;  //å› å­ä¸ªæ•°
+int symbol;  //ç”¨æˆ·è¾“å…¥çš„è¿ç®—ç¬¦
+int kuohao; //æ˜¯å¦æœ‰æ‹¬å·
+int xiaoshu;  //æ˜¯å¦æœ‰å°æ•°
+int shuchu;//è¾“å‡ºå½¢å¼
+char fuhao[4]={'+','-','*','/'};  //è¿ç®—ç¬¦
+using namespace std;
+ofstream outfile;//æ•°æ®å†™å…¥æ–‡ä»¶
 
-int elevator2(){
-	int floor[20];
-	int i=0;
-	int j=0;
-	int t;
-	int p;
-	int c;
-	int h;
-	int weight[10];
-	int s=0;
-	int l;
-	int p1;
-	int m;
-	while(1){
-		printf("1.ÉÏÂ¥\n");
-		printf("2.ÏÂÂ¥\n");
-		printf("3.ÍË³ö\n");
-		printf("ÇëÑ¡Ôñ(1-3):"); 
-		scanf("%d",&c); 
-		switch(c){
-		case 1:
-			printf("´ËµçÌİÖ»·şÎñµ¥ºÅÂ¥²ã\n");
-			printf("´ËµçÌİ×î´ó³Ë¿ÍÊıÁ¿10ÈË£¬×î´óÔØÖØÁ¿800KG\n");
-			printf("ÇëÊäÈë½øÈëµçÌİµÄÈËÊı:\n");
-			scanf("%d",&p);
-			printf("ËûÃÇµÄÌåÖØÒÀ´ÎÊÇ:\n");
-			for(i=0;i<p;i++){
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&weight[i]);
-				s=s+weight[i];
-				if(s>800){
-					printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË");
-					s=s-weight[i];
-					p=p-1;
-				}
-			}
-			printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-			printf("ÇëÊäÈëÄãÏëÈ¥µÄµ¥ºÅÂ¥²ã:\n");
-			for(i=0;i<p;i++){
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&floor[i]);
-			}
-			for(j=0;j<p-1;j++)
-				for(i=0;i<p-1-j;i++){
-					if(floor[i]>floor[i+1]){
-						t=floor[i];
-						floor[i]=floor[i+1];
-						floor[i+1]=t;
-					}
-				}
-				printf("½«ÒÀ´Îµ½´ïÏÂÁĞÂ¥²ã:\n");
-				for(j=0;j<p;j++){
-					printf("%d\n",floor[j]);
-					printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[j]);
-					printf("´Ë²ãÓĞÃ»ÓĞÈË½øµçÌİ?ÇëÑ¡Ôñ£º1-2\n");
-					printf("1.ÓĞÈË\n");
-					printf("2.ÎŞÈË\n");
-					scanf("%d",&h);
-					switch(h){
-					case 1:
-						printf("Çë½øµçÌİ\n");
-						printf("½øÈëµçÌİÈËÊı:\n");
-						scanf("%d",&p1);
-						printf("ÒÀ´ÎµÄÌåÖØ:\n");
-						for(l=0;l<p1;l++){
-							scanf("%d",&weight[l]);
-							s=s+weight[l];
-							if(s>800){
-								printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË\n");
-								s=s-weight[l];
-								p1=p1-1;
-							}
-						}
-						printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-						printf("ÇëÊäÈëÏëÈ¥µÄÂ¥²ã:\n");
-						for(m=0;m<p1;m++){
-							scanf("%d",&floor[m]);
-							printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[m]);
-							continue;
-						}
-						break;
-					case 2:
-						printf("¹Ø±ÕµçÌİÃÅ\n");
-						break;
-					}
-				}
-				break;
-		case 2:
-			printf("´ËµçÌİÖ»·şÎñµ¥ºÅÂ¥²ã\n");
-			printf("´ËµçÌİ×î´ó³Ë¿ÍÊıÁ¿10ÈË£¬×î´óÔØÖØÁ¿800KG\n");
-			printf("ÇëÊäÈë½øÈëµçÌİµÄÈËÊı:\n");
-			scanf("%d",&p);
-			printf("ËûÃÇµÄÌåÖØÒÀ´ÎÊÇ:\n");
-			for(i=0;i<p;i++){
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&weight[i]);
-				s=s+weight[i];
-				if(s>800){
-					printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË");
-					s=s-weight[i];
-					p=p-1;
-				}
-			}
-			printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-			printf("ÇëÊäÈëÄãÏëÈ¥µÄµ¥ºÅÂ¥²ã:\n");
-			for(i=0;i<p;i++){
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&floor[i]);
-			}
-			for(j=0;j<p-1;j++)
-				for(i=0;i<p-1-j;i++){
-					if(floor[i]<floor[i+1]){
-						t=floor[i];
-						floor[i]=floor[i+1];
-						floor[i+1]=t;
-					}
-				}
-				printf("½«ÒÀ´Îµ½´ïÏÂÁĞÂ¥²ã:\n");
-				for(j=0;j<p;j++){
-					printf("%d\n",floor[j]);
-					printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[j]);
-					printf("´Ë²ãÓĞÃ»ÓĞÈË½øµçÌİ?ÇëÑ¡Ôñ£º1-2\n");
-					printf("1.ÓĞÈË\n");
-					printf("2.ÎŞÈË\n");
-					scanf("%d",&h);
-					switch(h){
-					case 1:
-						printf("Çë½øµçÌİ\n");
-						printf("½øÈëµçÌİÈËÊı:\n");
-						scanf("%d",&p1);
-						printf("ÒÀ´ÎµÄÌåÖØ:\n");
-						for(l=0;l<p1;l++){
-							scanf("%d",&weight[l]);
-							s=s+weight[l];
-							if(s>800){
-								printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË\n");
-								s=s-weight[l];
-								p1=p1-1;
-							}
-						}
-						printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-						printf("ÇëÊäÈëÏëÈ¥µÄÂ¥²ã:\n");
-						for(m=0;m<p1;m++){
-							scanf("%d",&floor[m]);
-							printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[m]);
-							continue;
-						}
-						break;
-					case 2:
-						printf("¹Ø±ÕµçÌİÃÅ\n");
-						break;
-					}
-				}
-				break;
-		case 3:
-			return 0;
-			break;
-		}
-	}
-}
-
-int elevator3(){
-	int floor[20];
-	int i=0;
-	int j=0;
-	int t;
-	int p;
-	int c;
-	int weight[20];
-	int s=0;
-	int h;
-	int l;
-	int p1;
-	int m;
-	while(1){
-		printf("1.ÉÏÂ¥\n");
-		printf("2.ÏÂÂ¥\n");
-		printf("3.ÍË³ö\n");
-		printf("ÇëÑ¡Ôñ(1-3):"); 
-		scanf("%d",&c); 
-		switch(c){
-		case 1:
-			printf("´ËµçÌİÖ»·şÎñË«ºÅÂ¥²ã\n");
-			printf("´ËµçÌİ×î´ó³Ë¿ÍÊıÁ¿20ÈË£¬×î´óÔØÖØÁ¿1600KG\n");
-			printf("ÇëÊäÈë½øÈëµçÌİµÄÈËÊı:\n");
-			scanf("%d",&p);
-			printf("ËûÃÇµÄÌåÖØÒÀ´ÎÊÇ:\n");
-			for(i=0;i<p;i++){
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&weight[i]);
-				s=s+weight[i];
-				if(s>1600){
-					printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË");
-					s=s-weight[i];
-					p=p-1;
-				}
-			}
-			printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-			printf("ÇëÊäÈëÄãÏëÈ¥µÄË«ºÅÂ¥²ã:\n");
-			for(i=0;i<p;i++){
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&floor[i]);
-			}
-			for(j=0;j<p-1;j++)
-				for(i=0;i<p-1-j;i++){
-					if(floor[i]>floor[i+1]){
-						t=floor[i];
-						floor[i]=floor[i+1];
-						floor[i+1]=t;
-					}
-				}
-				printf("½«ÒÀ´Îµ½´ïÏÂÁĞÂ¥²ã:\n");
-				for(j=0;j<p;j++){
-					printf("%d\n",floor[j]);
-					printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[j]);
-					printf("´Ë²ãÓĞÃ»ÓĞÈË½øµçÌİ?ÇëÑ¡Ôñ£º1-2\n");
-					printf("1.ÓĞÈË\n");
-					printf("2.ÎŞÈË\n");
-					scanf("%d",&h);
-					switch(h){
-					case 1:
-						printf("Çë½øµçÌİ\n");
-						printf("½øÈëµçÌİÈËÊı:\n");
-						scanf("%d",&p1);
-						printf("ÒÀ´ÎµÄÌåÖØ:\n");
-						for(l=0;l<p1;l++)
-						{
-							scanf("%d",&weight[l]);
-							s=s+weight[l];
-							if(s>800)
-							{
-								printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË\n");
-								s=s-weight[l];
-								p1=p1-1;
-							}
-
-						}
-						printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-						printf("ÇëÊäÈëÏëÈ¥µÄÂ¥²ã:\n");
-						for(m=0;m<p1;m++)
-						{
-							scanf("%d",&floor[m]);
-							printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[m]);
-							continue;
-
-						}
-						break;
-					case 2:
-						printf("¹Ø±ÕµçÌİÃÅ\n");
-						break;
-					}
-				}
-				break;
-		case 2:
-			printf("´ËµçÌİÖ»·şÎñË«ºÅÂ¥²ã\n");
-			printf("´ËµçÌİ×î´ó³Ë¿ÍÊıÁ¿20ÈË£¬×î´óÔØÖØÁ¿1600KG\n");
-			printf("ÇëÊäÈë½øÈëµçÌİµÄÈËÊı:\n");
-			scanf("%d",&p);
-			printf("ËûÃÇµÄÌåÖØÒÀ´ÎÊÇ:\n");
-			for(i=0;i<p;i++)
-			{
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&weight[i]);
-				s=s+weight[i];
-				if(s>1600)
-				{
-					printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË");
-					s=s-weight[i];
-					p=p-1;
-				}
-			}
-			printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-
-			printf("ÇëÊäÈëÄãÏëÈ¥µÄË«ºÅÂ¥²ã:\n");
-			for(i=0;i<p;i++)
-			{
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&floor[i]);
-			}
-			for(j=0;j<p-1;j++)
-				for(i=0;i<p-1-j;i++)
-				{
-					if(floor[i]<floor[i+1])
-					{
-						t=floor[i];
-						floor[i]=floor[i+1];
-						floor[i+1]=t;
-					}
-				}
-				printf("½«ÒÀ´Îµ½´ïÏÂÁĞÂ¥²ã:\n");
-				for(j=0;j<p;j++)
-				{
-					printf("%d\n",floor[j]);
-					printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[j]);
-					printf("´Ë²ãÓĞÃ»ÓĞÈË½øµçÌİ?ÇëÑ¡Ôñ£º1-2\n");
-					printf("1.ÓĞÈË\n");
-					printf("2.ÎŞÈË\n");
-					scanf("%d",&h);
-
-					switch(h)
-					{
-					case 1:
-						printf("Çë½øµçÌİ\n");
-						printf("½øÈëµçÌİÈËÊı:\n");
-						scanf("%d",&p1);
-						printf("ÒÀ´ÎµÄÌåÖØ:\n");
-						for(l=0;l<p1;l++)
-						{
-							scanf("%d",&weight[l]);
-							s=s+weight[l];
-							if(s>800)
-							{
-								printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË\n");
-								s=s-weight[l];
-								p1=p1-1;
-							}
-
-						}
-						printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-						printf("ÇëÊäÈëÏëÈ¥µÄÂ¥²ã:\n");
-						for(m=0;m<p1;m++)
-						{
-							scanf("%d",&floor[m]);
-							printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[m]);
-							continue;
-
-						}
-						break;
-					case 2:
-						printf("¹Ø±ÕµçÌİÃÅ\n");
-						break;
-					}
-				}
-				break;
-		case 3:
-			return 0;
-			break;
-
-		}
-	}
-}
-
-int elevator4()
+void intno(int n)//æ•´å½¢æ•°æ— æ‹¬å·
 {
-	int floor[20];
-	int i=0;
-	int j=0;
-	int t;
-	int p;
-	int c;
-	int weight[20];
-	int s=0;
-	int h;
-	int x;
-	int l;
-	int p1;
-	int m;
-	srand(time(NULL));
-	x=rand()%20;
-	while(1)
-	{
-		printf("1.ÉÏÂ¥\n");
-		printf("2.ÏÂÂ¥\n");
-		printf("3.ÍË³ö\n");
-		printf("ÇëÑ¡Ôñ(1-3):"); 
-
-		scanf("%d",&c); 
-		switch(c)
-		{
-		case 1:
-			printf("´ËµçÌİ¿É·şÎñÈ«²¿Â¥²ã\n");
-			printf("´ËµçÌİ×î´ó³Ë¿ÍÊıÁ¿20ÈË£¬×î´óÔØÖØÁ¿2000KG\n");
-			printf("´ËÊ±µçÌİÕıÔÚ%d²ã,ÉÔ×÷µÈ´ı\n",x);
-			printf("ÇëÊäÈë½øÈëµçÌİµÄÈËÊı:\n");
-			scanf("%d",&p);
-			printf("ËûÃÇµÄÌåÖØÒÀ´ÎÊÇ:\n");
-			for(i=0;i<p;i++)
-			{
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&weight[i]);
-				s=s+weight[i];
-				if(s>2000)
-				{
-					printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË");
-					s=s-weight[p];
-					p=p-1;
-				}
-			}
-			printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-
-
-			printf("ÇëÊäÈëÄãÏëÈ¥µÄÂ¥²ã:\n");
-			for(i=0;i<p;i++)
-			{
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&floor[i]);
-			}
-			for(j=0;j<p-1;j++)
-				for(i=0;i<p-1-j;i++)
-				{
-					if(floor[i]>floor[i+1])
-					{
-						t=floor[i];
-						floor[i]=floor[i+1];
-						floor[i+1]=t;
-					}
-				}
-				printf("½«ÒÀ´Îµ½´ïÏÂÁĞÂ¥²ã:\n");
-				for(j=0;j<p;j++)
-				{
-					printf("%d\n",floor[j]);
-					printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[j]);
-					printf("´Ë²ãÓĞÃ»ÓĞÈË½øµçÌİ?ÇëÑ¡Ôñ£º1-2\n");
-					printf("1.ÓĞÈË\n");
-					printf("2.ÎŞÈË\n");
-					scanf("%d",&h);
-
-					switch(h)
-					{
-					case 1:
-						printf("Çë½øµçÌİ\n");
-						printf("½øÈëµçÌİÈËÊı:\n");
-						scanf("%d",&p1);
-						printf("ÒÀ´ÎµÄÌåÖØ:\n");
-						for(l=0;l<p1;l++)
-						{
-							scanf("%d",&weight[l]);
-							s=s+weight[l];
-							if(s>800)
-							{
-								printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË\n");
-								s=s-weight[l];
-								p1=p1-1;
-							}
-
-						}
-						printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-						printf("ÇëÊäÈëÏëÈ¥µÄÂ¥²ã:\n");
-						for(m=0;m<p1;m++)
-						{
-							scanf("%d",&floor[m]);
-							printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[m]);
-							continue;
-
-						}
-						break;
-					case 2:
-						printf("¹Ø±ÕµçÌİÃÅ\n");
-						break;
-					}
-				}
-				break;
-		case 2:
-			printf("´ËµçÌİ·şÎñÈ«²¿Â¥²ã\n");
-			printf("´ËµçÌİ×î´ó³Ë¿ÍÊıÁ¿20ÈË£¬×î´óÔØÖØÁ¿2000KG\n");
-			printf("´ËÊ±µçÌİÕıÔÚ%d²ã,ÉÔ×÷µÈ´ı\n",x);
-			printf("ÇëÊäÈë½øÈëµçÌİµÄÈËÊı:\n");
-			scanf("%d",&p);
-			printf("ËûÃÇµÄÌåÖØÒÀ´ÎÊÇ:\n");
-			for(i=0;i<p;i++)
-			{
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&weight[i]);
-				s=s+weight[i];
-				if(s>2000)
-				{
-					printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË");
-					s=s-weight[i];
-					p=p-1;
-				}
-
-			}
-			printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-
-			printf("ÇëÊäÈëÄãÏëÈ¥µÄÂ¥²ã:\n");
-			for(i=0;i<p;i++)
-			{
-				printf("µÚ%d¸öÈË: ",i+1);
-				scanf("%d",&floor[i]);
-			}
-			for(j=0;j<p-1;j++)
-				for(i=0;i<p-1-j;i++)
-				{
-					if(floor[i]<floor[i+1])
-					{
-						t=floor[i];
-						floor[i]=floor[i+1];
-						floor[i+1]=t;
-					}
-				}
-				printf("½«ÒÀ´Îµ½´ïÏÂÁĞÂ¥²ã:\n");
-				for(j=0;j<p;j++)
-				{
-					printf("%d\n",floor[j]);
-					printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[j]);
-					printf("´Ë²ãÓĞÃ»ÓĞÈË½øµçÌİ?ÇëÑ¡Ôñ£º1-2\n");
-					printf("1.ÓĞÈË\n");
-					printf("2.ÎŞÈË\n");
-					scanf("%d",&h);
-
-					switch(h)
-					{
-					case 1:
-						printf("Çë½øµçÌİ\n");
-						printf("½øÈëµçÌİÈËÊı:\n");
-						scanf("%d",&p1);
-						printf("ÒÀ´ÎµÄÌåÖØ:\n");
-						for(l=0;l<p1;l++)
-						{
-							scanf("%d",&weight[l]);
-							s=s+weight[l];
-							if(s>800)
-							{
-								printf("³¬ÖØ£¬ÇëÏÂÈ¥Ò»¸öÈË\n");
-								s=s-weight[l];
-								p1=p1-1;
-							}
-
-						}
-						printf("ÔØÖØÁ¿Îª%dkg,Î´³¬ÖØ\n",s);
-						printf("ÇëÊäÈëÏëÈ¥µÄÂ¥²ã:\n");
-						for(m=0;m<p1;m++)
-						{
-							scanf("%d",&floor[m]);
-							printf("ÒÑµ½´ï%d²ã£¬×ßºÃ\n",floor[m]);
-							continue;
-
-						}
-						break;
-					case 2:
-						printf("¹Ø±ÕµçÌİÃÅ\n");
-						break;
-					}
-				}
-				break;
-		case 3:
-			return 0;
-			break;
-		}
-	}
+    int i,a;
+    a=(rand()%imax)+1;//å¾—åˆ°ä¸€ä¸ª1åˆ°imaxçš„éšæœºæ•°a
+    cout<<a;
+    outfile<<a;
+    for(i=1;i<nums;i++)
+    {
+        a=(rand()%imax)+1;//å¾—åˆ°ä¸€ä¸ª1åˆ°imaxçš„éšæœºæ•°a
+        cout<<fuhao[n-1]<<a;
+        outfile<<fuhao[n-1]<<a;
+    }
+    cout<<"="<<endl;
+    outfile<<"="<<endl;
 }
-
-void main()
+void intyes(int n)//æ•´å½¢æ•°æœ‰æ‹¬å·
+{
+    int k,i,a;
+    n--;
+    k=rand()%2;//éšæœºç”Ÿæˆ"0"æˆ–"1"
+    a=(rand()%imax)+1;//å¾—åˆ°ä¸€ä¸ª1åˆ°imaxçš„éšæœºæ•°a
+    if(k==0)
+    {
+        cout<<a;
+        outfile<<a;
+        a=(rand()%imax)+1;
+        for(i=1;i<nums;i++)
+        {
+            a=(rand()%imax)+1;
+            cout<<fuhao[n];
+            outfile<<fuhao[n];
+            k=rand()%2;
+            if(k==1)
+            {
+                if(nums-i==1)
+                {
+                    cout<<a;
+                    outfile<<a;
+                    continue;
+                }
+                cout<<"("<<a<<fuhao[n];
+                outfile<<"("<<a<<fuhao[n];
+                a=(rand()%imax)+1;
+                cout<<a<<")";
+                outfile<<a<<")";
+                i++;
+            }
+            else
+            {
+                cout<<a;
+                outfile<<a;
+            }
+        }
+        cout<<"="<<endl;
+        outfile<<"="<<endl;
+    }
+    else
+    {
+        cout<<"("<<a<<fuhao[n];
+        outfile<<"("<<a<<fuhao[n];
+        a=(rand()%imax)+1;
+        cout<<a<<")";
+        outfile<<a<<")";
+        for(i=2;i<nums;i++)
+        {
+            a=(rand()%imax)+1;
+            cout<<fuhao[n];
+            outfile<<fuhao[n];
+            k=rand()%2;
+            if(k==1)
+            {
+                if(nums-i==1)
+                {
+                    cout<<a;
+                    outfile<<a;
+                    continue;
+                }
+                cout<<"("<<a<<fuhao[n];
+                outfile<<"("<<a<<fuhao[n];
+                a=(rand()%imax)+1;
+                cout<<a<<")";
+                outfile<<a<<")";
+                i++;
+            }
+            else
+            {
+                cout<<a;
+                outfile<<a;
+            }
+        }
+        cout<<"="<<endl;
+        outfile<<"="<<endl;
+    }
+}
+void intys()//ç”Ÿæˆæ•´æ•°å››åˆ™è¿ç®—
 {
 	int a;
-	while(1)
+	int x,i;
+	if(kuohao==1)//ä¸éœ€è¦æ‹¬å·
 	{
-
-		printf("»¶Ó­Ê¹ÓÃµçÌİ\n");
-		printf("1.³Ë×ø1ºÅµçÌİ\n");
-		printf("2.³Ë×ø2ºÅµçÌİ\n");
-		printf("3.³Ë×ø3ºÅµçÌİ\n");
-		printf("4.³Ë×ø4ºÅµçÌİ\n");
-		printf("5.ÍË³ö\n");
-		printf("ÇëÑ¡Ôñ(1-5):"); 
-
-		scanf("%d",&a); 
-
-		getchar(); 
-
-		switch(a) 
-
-		{ 
-		case 1:
-			elevator1();
-			break;
-		case 2:
-			elevator2();
-			break;
-
-		case 3:
-			elevator3();
-			break;
-		case 4:
-			elevator4();
-			break;
-		case 5:
-			exit(0);
-			break;
+		if(symbol==1||symbol==2||symbol==3||symbol==4)//æ‰§è¡Œ"+"è¿ç®—
+		{
+		    intno(symbol);
+		}
+		else if(symbol==5)//æ‰§è¡Œæ··åˆè¿ç®—
+		{
+		    a=(rand()%imax)+1;//å¾—åˆ°ä¸€ä¸ª1åˆ°imaxçš„éšæœºæ•°a
+		    cout<<a;
+            for(i=1;i<nums;i++)
+            {
+                x=rand()%4;//éšæœºå¾—åˆ°"+" "-" "*" "/"ä¸­çš„ä¸€ä¸ª
+                a=(rand()%imax)+1;//å¾—åˆ°ä¸€ä¸ª1åˆ°imaxçš„éšæœºæ•°a
+                cout<<fuhao[x]<<a;
+                outfile<<fuhao[x]<<a;
+            }
+            cout<<"="<<endl;
+            outfile<<"="<<endl;
 		}
 	}
+	else
+	{
+	    if(symbol==1||symbol==2||symbol==3||symbol==4)
+        {
+            intyes(symbol);
+        }
+        else if(symbol==5)
+        {
+            int k,i,a;
+            k=rand()%2;//éšæœºç”Ÿæˆ"0"æˆ–"1"
+            a=(rand()%imax)+1;//å¾—åˆ°ä¸€ä¸ª1åˆ°imaxçš„éšæœºæ•°a
+            if(k==0)
+            {
+                cout<<a;
+                outfile<<a;
+                a=(rand()%imax)+1;
+                for(i=1;i<nums;i++)
+                {
+                    x=rand()%4;//éšæœºå¾—åˆ°"+" "-" "*" "/"ä¸­çš„ä¸€ä¸ª
+                    a=(rand()%imax)+1;
+                    cout<<fuhao[x];
+                    outfile<<fuhao[x];
+                    k=rand()%2;
+                    if(k==1)
+                    {
+                       if(nums-i==1)
+                       {
+                           cout<<a;
+                           outfile<<a;
+                           continue;
+                       }
+                       x=rand()%4;//éšæœºå¾—åˆ°"+" "-" "*" "/"ä¸­çš„ä¸€ä¸ª
+                       cout<<"("<<a<<fuhao[x];
+                       outfile<<"("<<a<<fuhao[x];
+                       a=(rand()%imax)+1;
+                       cout<<a<<")";
+                       outfile<<a<<")";
+                       i++;
+                     }
+                     else
+                     {
+                         cout<<a;
+                         outfile<<a;
+                     }
+                 }
+                 cout<<"="<<endl;
+                 outfile<<"="<<endl;
+             }
+             else
+             {
+                 x=rand()%4;//éšæœºå¾—åˆ°"+" "-" "*" "/"ä¸­çš„ä¸€ä¸ª
+                 cout<<"("<<a<<fuhao[x];
+                 outfile<<"("<<a<<fuhao[x];
+                 a=(rand()%imax)+1;
+                 cout<<a<<")";
+                 outfile<<a<<")";
+                 for(i=2;i<nums;i++)
+                 {
+                     a=(rand()%imax)+1;
+                     x=rand()%4;//éšæœºå¾—åˆ°"+" "-" "*" "/"ä¸­çš„ä¸€ä¸ª
+                     cout<<fuhao[x];
+                     outfile<<fuhao[x];
+                     k=rand()%2;
+                     if(k==1)
+                     {
+                         if(nums-i==1)
+                         {
+                            cout<<a;
+                            outfile<<a;
+                            continue;
+                     }
+                     x=rand()%4;//éšæœºå¾—åˆ°"+" "-" "*" "/"ä¸­çš„ä¸€ä¸ª
+                     cout<<"("<<a<<fuhao[x];
+                     outfile<<"("<<a<<fuhao[x];
+                     a=(rand()%imax)+1;
+                     cout<<a<<")";
+                     outfile<<a<<")";
+                     i++;
+                     }
+                     else
+                     {
+                         cout<<a;
+                         outfile<<a;
+                     }
+                  }
+                  cout<<"="<<endl;
+                  outfile<<"="<<endl;
+              }
+        }
+    }
+}
+void floatno(int n)//å°æ•°æ— æ‹¬å·
+{
+    int i;
+    float a;
+    a=(float)rand()/RAND_MAX*imax+1.0;
+    cout<<a;
+    outfile<<a;
+    for(i=1;i<nums;i++)
+    {
+        a=(float)rand()/RAND_MAX*imax+1.0;
+        cout<<fuhao[n-1]<<a;
+        outfile<<fuhao[n-1]<<a;
+    }
+    cout<<"="<<endl;
+    outfile<<"="<<endl;
+}
+void floatyes(int n)//å°æ•°æœ‰æ‹¬å·
+{
+    int k,i;
+    float a;
+    n--;
+    k=rand()%2;//éšæœºç”Ÿæˆ"0"æˆ–"1"
+    a=(float)rand()/RAND_MAX*imax+1.0;
+    if(k==0)
+    {
+        cout<<a;
+        outfile<<a;
+        a=(float)rand()/RAND_MAX*imax+1.0;
+        for(i=1;i<nums;i++)
+        {
+            a=(float)rand()/RAND_MAX*imax+1.0;
+            cout<<fuhao[n];
+            outfile<<fuhao[n];
+            k=rand()%2;
+            if(k==1)
+            {
+                if(nums-i==1)
+                {
+                    cout<<a;
+                    outfile<<a;
+                    continue;
+                }
+                cout<<"("<<a<<fuhao[n];
+                outfile<<"("<<a<<fuhao[n];
+                a=(float)rand()/RAND_MAX*imax+1.0;
+                cout<<a<<")";
+                outfile<<a<<")";
+                i++;
+            }
+            else
+            {
+                cout<<a;
+                outfile<<a;
+            }
+        }
+        cout<<"="<<endl;
+        outfile<<"="<<endl;
+    }
+    else
+    {
+        cout<<"("<<a<<fuhao[n];
+        outfile<<"("<<a<<fuhao[n];
+        a=(float)rand()/RAND_MAX*imax+1.0;
+        cout<<a<<")";
+        outfile<<a<<")";
+        for(i=2;i<nums;i++)
+        {
+            a=(float)rand()/RAND_MAX*imax+1.0;
+            cout<<fuhao[n];
+            outfile<<fuhao[n];
+            k=rand()%2;
+            if(k==1)
+            {
+                if(nums-i==1)
+                {
+                    cout<<a;
+                    outfile<<a;
+                    continue;
+                }
+                cout<<"("<<a<<fuhao[n];
+                outfile<<"("<<a<<fuhao[n];
+                a=(float)rand()/RAND_MAX*imax+1.0;
+                cout<<a<<")";
+                outfile<<a<<")";
+                i++;
+            }
+            else
+            {
+                cout<<a;
+                outfile<<a;
+            }
+        }
+        cout<<"="<<endl;
+        outfile<<"="<<endl;
+    }
+}
+void doubleys()//ç”Ÿæˆå°æ•°å››åˆ™è¿ç®—
+{
+	float a;
+	int x,i;
+	x=rand()%4;
+	if(kuohao==1)
+	{
+		if(symbol==1||symbol==2||symbol==3||symbol==4)
+		{
+			floatno(symbol);
+		}
+		else if(symbol==5)
+		{
+		    a=(float)rand()/RAND_MAX*imax+1.0;
+		    cout<<a;
+		    for(i=1;i<nums;i++)
+            {
+                x=rand()%4;
+                a=(float)rand()/RAND_MAX*imax+1.0;
+                cout<<fuhao[x]<<a;
+                outfile<<fuhao[x]<<a;
+            }
+            cout<<"="<<endl;
+            outfile<<"="<<endl;
+		}
+	}
+	else
+	{
+		if(symbol==1||symbol==2||symbol==3||symbol==4)
+		{
+			floatyes(symbol);
+		}
+		else if(symbol==5)
+		{
+		    int k;
+			k=rand()%2;//éšæœºç”Ÿæˆ"0"æˆ–"1"
+            a=(float)rand()/RAND_MAX*imax+1.0;
+            if(k==0)
+            {
+               cout<<a;
+               outfile<<a;
+               a=(float)rand()/RAND_MAX*imax+1.0;
+               for(i=1;i<nums;i++)
+               {
+                   a=(float)rand()/RAND_MAX*imax+1.0;
+                   x=rand()%4;//éšæœºå¾—åˆ°"+" "-" "*" "/"ä¸­çš„ä¸€ä¸ª
+                   cout<<fuhao[x];
+                   outfile<<fuhao[x];
+                   k=rand()%2;
+                   if(k==1)
+                   {
+                      if(nums-i==1)
+                      {
+                         cout<<a;
+                         outfile<<a;
+                         continue;
+                      }
+                      x=rand()%4;//éšæœºå¾—åˆ°"+" "-" "*" "/"ä¸­çš„ä¸€ä¸ª
+                      cout<<"("<<a<<fuhao[x];
+                      outfile<<"("<<a<<fuhao[x];
+                      a=(float)rand()/RAND_MAX*imax+1.0;
+                      cout<<a<<")";
+                      outfile<<a<<")";
+                      i++;
+                   }
+                   else
+                   {
+                      cout<<a;
+                      outfile<<a;
+                  }
+               }
+               cout<<"="<<endl;
+               outfile<<"="<<endl;
+            }
+            else
+            {
+                x=rand()%4;//éšæœºå¾—åˆ°"+" "-" "*" "/"ä¸­çš„ä¸€ä¸ª
+                cout<<"("<<a<<fuhao[x];
+                outfile<<"("<<a<<fuhao[x];
+                a=(float)rand()/RAND_MAX*imax+1.0;
+                cout<<a<<")";
+                outfile<<a<<")";
+                for(i=2;i<nums;i++)
+                {
+                    a=(float)rand()/RAND_MAX*imax+1.0;
+                    x=rand()%4;//éšæœºå¾—åˆ°"+" "-" "*" "/"ä¸­çš„ä¸€ä¸ª
+                    cout<<fuhao[x];
+                    outfile<<fuhao[x];
+                    k=rand()%2;
+                    if(k==1)
+                    {
+                       if(nums-i==1)
+                       {
+                           cout<<a;
+                           outfile<<a;
+                           continue;
+                       }
+                       x=rand()%4;//éšæœºå¾—åˆ°"+" "-" "*" "/"ä¸­çš„ä¸€ä¸ª
+                       cout<<"("<<a<<fuhao[x];
+                       outfile<<"("<<a<<fuhao[x];
+                       a=(float)rand()/RAND_MAX*imax+1.0;
+                       cout<<a<<")";
+                       outfile<<a<<")";
+                       i++;
+                   }
+                   else
+                   {
+                       cout<<a;
+                       outfile<<a;
+                   }
+                }
+                cout<<"="<<endl;
+                outfile<<"="<<endl;
+             }
+		}
+	}
+}
+int main()
+{
+    cout<<"-----å°å­¦ç”Ÿå››åˆ™è¿ç®—ç»ƒä¹ ç³»ç»Ÿ-----"<<endl;
+	cout<<"******************************** "<<endl;
+	cout<<"      1: è¯·è¾“å…¥ç®—å¼æ•°é‡: "<<endl;
+	cin>>num;
+	cout<<"      2: è¯·è¾“å…¥æœ€å¤§æ•°: "<<endl;
+	cin>>imax;
+	cout<<"      3: è¯·è¾“å‡ºè¿ç®—ä¸ªæ•°ï¼š"<<endl;
+	cin>>nums;
+	cout<<"      4: è¯·è¾“å…¥è¿ç®—ç¬¦: "<<endl;
+	cout<<"      1ä»£è¡¨+ 2ä»£è¡¨- 3ä»£è¡¨* 4ä»£è¡¨/ 5ä»£è¡¨æ··åˆ:"<<endl;
+	cin>>symbol;
+	cout<<"      5: è¯·é€‰æ‹©æ•°å­—ç±»å‹: "<<endl;
+	cout<<"      1ä»£è¡¨æ•´æ•° 2ä»£è¡¨å°æ•°"<<endl;
+	cin>>xiaoshu;
+	cout<<"      6: è¯·é€‰æ‹©æ˜¯å¦éœ€è¦æ‹¬å· "<<endl;
+	cout<<"      1ä»£è¡¨ä¸éœ€è¦æ‹¬å· 2ä»£è¡¨éœ€è¦æ‹¬å·"<<endl;
+	cin>>kuohao;
+	cout<<"      7: è¯·é€‰æ‹©è¾“å‡ºå½¢å¼ "<<endl;
+	cout<<"      1ä»£è¡¨è¾“å‡ºåˆ°æ–‡ä»¶ 2ä»£è¡¨æ‰“å°æœºæˆ–æ‰“å°åˆ°å±å¹•"<<endl;
+	cin>>shuchu;
+	if(shuchu==1)
+    {
+        outfile.open("test.txt");//æ•°æ®å†™å…¥æ–‡ä»¶
+    }
+	if(xiaoshu==1)
+	{
+		srand(time(NULL));//è®¾ç½®ä¸€ä¸ªéšæœºç§å­ï¼Œæ¯æ¬¡è¿è¡Œéƒ½èƒ½ä¿è¯éšæœºç§å­ä¸åŒ
+		for(int i=0;i<num;i++)
+		{
+			intys();
+		}
+	}
+	else
+	{
+		srand(time(NULL));
+		for(int i=0;i<num;i++)
+		{
+			doubleys();
+		}
+	}
+	outfile.close();
+	cout<<"******************************** "<<endl;
+	return 0;
 }
