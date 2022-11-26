@@ -1,0 +1,5 @@
+<html>
+     <body>
+          <img src="http://localhost:6100/employee/getQrCode/1" >
+     </body>
+</html>
