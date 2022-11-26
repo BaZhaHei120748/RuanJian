@@ -1,0 +1,16 @@
+    @ApiOperation(value = "获取二维码")
+    @RequestMapping(value = "/getQrCode/{id}" ,method = {RequestMethod.GET ,RequestMethod.POST})
+    public void getQrCode(@PathVariable String id, HttpServletResponse response) throws Exception {
+ 
+        response.setDateHeader("Expires", 0);
+        response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+        response.addHeader("Cache-Control", "post-check=0, pre-check=0");
+        response.setHeader("Pragma", "no-cache");
+        response.setContentType("image/jpeg");
+ 
+//        QrConfig qrConfig = QrConfig.create().setImg(FileUtil.file("logo.jpg"));
+ 
+        // 生成指定url对应的二维码到文件，宽和高都是300像素
+//        QrCodeUtil.generate(url, qrConfig, "jpg", response.getOutputStream());
+        QrCodeUtil.generate("https://blog.csdn.net/lp840312696", 300, 300, "jpg", response.getOutputStream());
+    }
