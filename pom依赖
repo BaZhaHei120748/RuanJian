@@ -1,0 +1,13 @@
+        <!--工具类组件-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.3.5</version>
+            <scope>compile</scope>
+        </dependency>
+        <!--生成二维码组件-->
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.3.3</version>
+        </dependency>
